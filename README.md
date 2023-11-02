@@ -6,5 +6,6 @@ laravelを利用したポートフォリオです。以下の技術を使用し�
 - php 8.2.12
 - Docker
 - Nginx
-- MySQL
+- MySQL 8.0.33
+- phpmyadmin
 - yarn
