@@ -1,0 +1,42 @@
+version: '3'
+services:
+  laraveltest-nginx:
+    container_name: "laraveltest-nginx"
+    build:
+      context: ./docker/nginx
+    depends_on:
+      - laraveltest-app
+    ports:
+      - 8001:8001
+    volumes:
+      - ./:/src
+
+  laraveltest-app:
+    container_name: "laraveltest-app"
+    build:
+      context: ./docker/php
+    depends_on:
+      - laraveltest-mysql
+    volumes:
+      - ./:/src
+      - /src/node_modules
+      - /src/vendor
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+
+  laraveltest-mysql:
+    image: mysql:8.0.33
+    command: --max_allowed_packet=32505856
+    container_name: "laraveltest-mysql"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=laraveltest
+    ports:
+      - 3306:3306
+
+  laraveltest-redis:
+    image: redis:alpine
+    container_name: "laraveltest-redis"
+    ports:
+      - 16379:6379
