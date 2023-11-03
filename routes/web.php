@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('hello');
+    return view('index');
 });
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
