@@ -13,8 +13,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        $data = ['articles' => $articles];
-        return view('articles.index', $data);
+        $count = Article::count();
+        return view('articles.index', compact('articles','count'));
     }
 
     /**
