@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/main.css">
+    @vite(['resources/css/app.css', 'resources/scss/common/table.scss', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         <div class="site-title">登録内容一覧</div>
     </header>
     <main class="container">
-        <table border="1">
+        <table class="table">
             <tr>
                 <td>
                     <div class="article-title">タイトル</div>
@@ -23,6 +23,8 @@
                 </td>
                 <td>
                     <div class="article-title">機能</div>
+                    {{ Form::open(['url' => '/']) }} 
+                    {{ Form::close() }}
                 </td>
             </tr>
 

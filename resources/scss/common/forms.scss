@@ -1,0 +1,97 @@
+@import "_variables";
+
+.view {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    width: 100%;
+
+    label {
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+
+    span.view-value {
+        font-weight: bold;
+    }
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+
+    &.required label {
+        display: flex;
+        align-items: center;
+
+        &::after {
+            content: "必須";
+            display: inline-block;
+            margin-left: 6px;
+            margin-bottom: 2px;
+            font-size: 9px;
+            color: $color-white;
+            background-color: $color-red;
+            border-radius: 4px;
+            width: 27px;
+            height: 15px;
+            text-align: center;
+            line-height: 1.6;
+        }
+    }
+
+    input:not([type="checkbox"]),
+    select {
+        border: 1px solid $color-gray-light;
+        height: 30px;
+        border-radius: 3px;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $color-blue;
+        }
+    }
+
+    &.checkbox {
+        label {
+            display: flex;
+            align-items: center;
+            input {
+                margin-right: 8px;
+            }
+        }
+    }
+    
+    .select2 {
+        .select2-selection {
+            border: 1px solid $color-gray-light;
+            height: 30px;
+            border-radius: 3px;
+            width: 100%;
+        }
+    }
+
+    textarea {
+        border: 1px solid $color-gray-light;
+        border-radius: 3px;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $color-blue;
+        }
+    }
+
+    &.error {
+        input {
+            border: 1px solid $color-red;
+        }
+
+        .error-message {
+            color: $color-red;
+            margin-top: 8px;
+        }
+    }
+}

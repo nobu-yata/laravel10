@@ -1,0 +1,49 @@
+@import "_variables";
+
+/* Flash messages */
+.message {
+    padding: 1rem;
+
+    background: #eff8ff;
+    color: #2779bd;
+
+    border-color: #6cb2eb;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+.message.hidden {
+    display: none;
+}
+.message.success {
+    background: #e3fcec;
+    color: #1f9d55;
+    border-color: #51d88a;
+}
+.message.warning {
+    background: #fffabc;
+    color: #8d7b00;
+    border-color: #d3b800;
+}
+.message.error {
+    background: #fcebea;
+    color: #cc1f1a;
+    border-color: #ef5753;
+}
+
+.asc:after {
+    content: " \2193";
+}
+.desc:after {
+    content: " \2191";
+}
+
+/* Error */
+.error-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}

@@ -7,7 +7,7 @@ laravelを利用した作業例です。以下の技術を使用しています�
 - Nginx
 - MySQL 8.0.33
 - phpmyadmin
-- yarn
+- vite
 
 ## 機能について
 記事の一覧表示、DBへの登録・変更・削除を実装しています。

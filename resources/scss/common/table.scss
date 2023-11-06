@@ -1,0 +1,53 @@
+@import "_variables";
+
+.table {
+    /*ストライプ設定リセット*/
+    --bs-table-striped-bg: initial;
+    /*ホバー時の色指定*/
+    --bs-table-hover-bg: #{$color-gray-light};
+
+    td,
+    th {
+        border: $color-gray-light solid 1px;
+    }
+
+    th {
+        text-align: center;
+        color: $color-gray-ultra-light;
+        font-weight: 500;
+        background-color: $color-gray;
+        vertical-align: middle;
+
+        a {
+            text-decoration: none;
+            color: $color-gray-ultra-light;
+        }
+    }
+
+    tbody {
+        color: $color-black;
+
+        tr:nth-child(even) td {
+            /* 偶数行の背景色 */
+            background: $color-gray-ultra-light;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(odd) td {
+            /* 奇数行の背景色 */
+            background: $color-white;
+            vertical-align: middle;
+        }
+    }
+   
+    &.view-table {
+        td {
+            background: $color-white !important;
+        }
+
+        th {
+            text-align: left;
+            width: 25%;
+        }
+    }
+}
