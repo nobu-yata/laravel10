@@ -23,8 +23,6 @@
                 </td>
                 <td>
                     <div class="article-title">機能</div>
-                    {{ Form::open(['url' => '/']) }} 
-                    {{ Form::close() }}
                 </td>
             </tr>
 
@@ -35,6 +33,16 @@
                 </td>
                 <td>
                     <div class="article-body">{{ $article->body }}</div>
+                </td>
+                <td>
+                    <div>
+                        {{ Form::open(['route' => 'articles.edit']) }}
+                        {{ Form::hidden('id', $article->id) }}
+                        {{ Form::button('編集', 
+                            ['type' => 'submit'],
+                            ['class' => 'btn btn-primary btn-sm me-2']) }}
+                        {{ Form::close() }}
+                    </div>
                 </td>
             </tr>
             @endforeach

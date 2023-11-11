@@ -15,3 +15,4 @@ use App\Http\Controllers\ArticleController;
 */
 
 Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+Route::post('/edit', [ArticleController::class, 'edit'])->name('articles.edit');

@@ -44,9 +44,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit(Article $article,Request $request)
     {
-        //
+        $article = Article::find($request->input('id'));
+        return view('articles.edit', compact('article'));
     }
 
     /**
