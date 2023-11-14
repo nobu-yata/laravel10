@@ -13,6 +13,7 @@
         <div class="site-title">登録内容変更</div>
     </header>
     <main class="container">
+        {{ Form::open(['route' => ['articles.update', 'id' => $article->id]]) }}
         <table class="table">
             <tr>
                 <td>
@@ -27,12 +28,18 @@
                     <div class="article-title">{{ Form::text('title', $article->title) }}</div>
                 </td>
                 <td>
-                    <div class="article-title">{{ Form::text('article', $article->body) }}</div>
+                    <div class="article-title">{{ Form::text('body', $article->body) }}</div>
                 </td>
             </tr>
 
         </table>
-        <a href="{{route('articles.index')}}">戻る</a>
+        <br>
+        {{ Form::button('更新', 
+            ['type' => 'submit'],
+            ['class' => 'btn btn-primary btn-sm me-2']) }}
+        {{ Form::close() }}
+        <br>
+        <a href="{{route('articles.index')}}">{{__('戻る')}}</a>
     </main>
     <footer>
         Laravel Test

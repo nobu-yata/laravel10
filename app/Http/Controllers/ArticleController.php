@@ -14,7 +14,7 @@ class ArticleController extends Controller
     {
         $articles = Article::all();
         $count = Article::count();
-        return view('articles.index', compact('articles','count'));
+        return view('articles.index', compact('articles', 'count'));
     }
 
     /**
@@ -44,9 +44,9 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article,Request $request)
+    public function edit(Article $article, Request $request)
     {
-        $article = Article::find($request->input('id'));
+        $article = Article::find($request->id);
         return view('articles.edit', compact('article'));
     }
 
@@ -55,7 +55,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+
+        //$article->update($request->all());
+        Article::where('id', '=', $request->id)
+            ->update([
+                'title' => $request->input('title'),
+                'body' => $request->input('body'),
+            ]);
+
+            
+        return redirect()->route('articles.index')
+            ->with('success', 'Post updated successfully');
     }
 
     /**

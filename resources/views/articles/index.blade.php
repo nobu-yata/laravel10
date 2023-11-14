@@ -36,8 +36,7 @@
                 </td>
                 <td>
                     <div>
-                        {{ Form::open(['route' => 'articles.edit']) }}
-                        {{ Form::hidden('id', $article->id) }}
+                        {{ Form::open(['route' => ['articles.edit', 'id' => $article->id]]) }}
                         {{ Form::button('編集', 
                             ['type' => 'submit'],
                             ['class' => 'btn btn-primary btn-sm me-2']) }}
