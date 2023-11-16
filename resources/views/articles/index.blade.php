@@ -47,19 +47,6 @@
                             {{ Form::close() }}
                         </div>
                     </td>
-                    <td class="actions">
-                        <span class="ms-0 ">
-                            <button class=" btn btn-secondary dropdown-toggle places-table__col-operation" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                操作
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                <li>
-                                <a href="{{route('articles.index')}}">{{__('戻る')}}</a>
-
-                                </li>
-                            </ul>
-                        </span>
-                    </td>
                 </tr>
                 @endforeach
             </thead>
