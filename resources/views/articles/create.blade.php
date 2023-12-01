@@ -20,7 +20,7 @@
         <div class="site-title">登録内容変更</div>
     </header>
     <main class="container">
-        {{ Form::open(['route' => ['articles.update', 'id' => $article->id]]) }}
+        {{ Form::open(['route' => ['articles.store']]) }}
         <table class="table">
             <tr>
                 <td>
@@ -32,16 +32,16 @@
             </tr>
             <tr>
                 <td>
-                    <div class="article-title">{{ Form::text('title', $article->title) }}</div>
+                    <div class="article-title">{{ Form::text('title') }}</div>
                 </td>
                 <td>
-                    <div class="article-title">{{ Form::text('body', $article->body) }}</div>
+                    <div class="article-title">{{ Form::text('body') }}</div>
                 </td>
             </tr>
 
         </table>
         <br>
-        {{ Form::button('更新', 
+        {{ Form::button('新規登録', 
             ['type' => 'submit'],
             ['class' => 'btn btn-primary btn-sm me-2']) }}
         {{ Form::close() }}
