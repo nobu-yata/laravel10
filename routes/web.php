@@ -19,3 +19,4 @@ Route::post('/create', [ArticleController::class, 'create'])->name('articles.cre
 Route::post('/store', [ArticleController::class, 'store'])->name('articles.store');
 Route::post('/edit', [ArticleController::class, 'edit'])->name('articles.edit');
 Route::post('/update', [ArticleController::class, 'update'])->name('articles.update');
+Route::post('/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');

@@ -60,15 +60,14 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Article $article, Request $request)
     {
 
-        Article::where('id', '=', $request->id)
+        $article->where('id', '=', $request->id)
             ->update([
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
             ]);
-
 
         return redirect()->route('articles.index')
             ->with('success', 'Post updated successfully');
@@ -77,8 +76,12 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article)
+    public function destroy(Article $article, Request $request)
     {
-        //
+        $article->where('id', '=', $request->id)
+            ->delete();
+
+        return redirect()->route('articles.index')
+            ->with('success', 'Post updated successfully');
     }
 }

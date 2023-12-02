@@ -46,6 +46,12 @@
                             ['type' => 'submit','class' => 'btn btn-secondary btn-sm me-2']) }}
                             {{ Form::close() }}
                         </div>
+                        <div>
+                            {{ Form::open(['route' => ['articles.destroy', 'id' => $article->id]]) }}
+                            {{ Form::button('削除', 
+                            ['type' => 'submit','class' => 'btn btn-warning btn-sm me-2']) }}
+                            {{ Form::close() }}
+                        </div>
                     </td>
                 </tr>
                 @endforeach
