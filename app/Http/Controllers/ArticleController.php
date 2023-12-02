@@ -28,9 +28,16 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Article $article, Request $request)
     {
-        //
+        $article->fill([
+            'title' =>  $request->input('title'),
+            'body' => $request->input('body')
+        ])->save();
+
+
+        return redirect()->route('articles.index')
+            ->with('success', 'Post updated successfully');
     }
 
     /**
@@ -53,17 +60,16 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request)
     {
 
-        //$article->update($request->all());
         Article::where('id', '=', $request->id)
             ->update([
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
             ]);
 
-            
+
         return redirect()->route('articles.index')
             ->with('success', 'Post updated successfully');
     }
