@@ -1,15 +1,15 @@
 @import "_variables";
 header {
     padding: 10px 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    background: #4470b1;
-    color: #fff;
+    border-bottom: 1px solid $color-black;
+    background: $color-blue;
+    color: $color-blue-light;
 }
 footer {
     padding: 20px;
     text-align: center;
     font-size: .9rem;
-    color: #777;
+    color: $color-gray;
 }
 body {
     margin: 0;  
