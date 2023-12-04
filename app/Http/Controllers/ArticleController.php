@@ -12,9 +12,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $title = '書き込み一覧';
         $articles = Article::all();
         $count = Article::count();
-        return view('articles.index', compact('articles', 'count'));
+        return view('articles.index', compact('articles', 'count', 'title'));
     }
 
     /**
@@ -22,7 +23,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $title = '新規書き込み';
+        return view('articles.create', compact('title'));
     }
 
     /**
@@ -53,8 +55,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article, Request $request)
     {
+        $title = '書き込み編集';
         $article = Article::find($request->id);
-        return view('articles.edit', compact('article'));
+        return view('articles.edit', compact('article', 'title'));
     }
 
     /**
