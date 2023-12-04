@@ -39,7 +39,7 @@ class ArticleController extends Controller
 
 
         return redirect()->route('articles.index')
-            ->with('success', 'Post updated successfully');
+            ->with('success', '登録しました。');
     }
 
     /**
@@ -73,7 +73,7 @@ class ArticleController extends Controller
             ]);
 
         return redirect()->route('articles.index')
-            ->with('success', 'Post updated successfully');
+            ->with('success', '変更しました。');
     }
 
     /**
@@ -85,6 +85,6 @@ class ArticleController extends Controller
             ->delete();
 
         return redirect()->route('articles.index')
-            ->with('success', 'Post updated successfully');
+            ->with('success', '削除しました。');
     }
 }

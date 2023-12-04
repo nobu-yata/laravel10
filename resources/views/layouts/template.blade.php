@@ -19,10 +19,15 @@
     <header>
         <div class="site-title"> {{ $title }} </div>
     </header>
+    @if (session('success'))
+    <div class="flash_message bg-success text-center py-3 my-0">
+        {{ session('success') }}
+    </div>
+    @endif
     @yield('contents')
     <footer>
-    Laravel Test
-</footer>
+        Laravel Test
+    </footer>
 </body>
 
 </html>
