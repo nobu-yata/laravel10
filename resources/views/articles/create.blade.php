@@ -3,24 +3,19 @@
 
 <main class="container">
     {{ Form::open(['route' => ['articles.store']]) }}
-    <table class="table">
+    <table class="table mt-4">
         <tr>
-            <td>
-                <div class="article-title">タイトル</div>
-            </td>
-            <td>
-                <div class="article-title">内容</div>
-            </td>
+            <th>タイトル</th>
+            <th>内容</th>
         </tr>
         <tr>
             <td>
-                <div class="article-title">{{ Form::text('title') }}</div>
+                <div>{{ Form::text('title') }}</div>
             </td>
             <td>
-                <div class="article-title">{{ Form::text('body') }}</div>
+                <div>{{ Form::text('body') }}</div>
             </td>
         </tr>
-
     </table>
     <br>
     {{ Form::button('新規登録', 

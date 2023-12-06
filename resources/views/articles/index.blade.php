@@ -1,16 +1,17 @@
 @extends('layouts.template')
 @section('contents')
-
-<div class="mb-2">
-    {{ Form::open(['route' => 'articles.create']) }}
-    {{ Form::button('追加', 
-            ['type' => 'submit','class' => 'btn btn-primary btn-sm me-2'],
-            ) }}
-    {{ Form::close() }}
-</div>
 <main class="container">
     <table class="table table-striped table-hover summary-table mb-4">
         <thead>
+            <tr>
+                <div class="mt-2 mb-2">
+                    {{ Form::open(['route' => 'articles.create']) }}
+                    {{ Form::button('追加', 
+                        ['type' => 'submit','class' => 'btn btn-primary btn-sm me-2'],
+                    ) }}
+                    {{ Form::close() }}
+                </div>
+            </tr>
             <tr>
                 <th>タイトル</th>
                 <th>内容</th>
