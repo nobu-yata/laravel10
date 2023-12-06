@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     @vite([
-    'resources/scss/common/default.scss',
-    'resources/scss/common/forms.scss',
-    'resources/scss/common/button.scss',
-    'resources/scss/common/table.scss',
-    'resources/scss/common/text.scss',
+    'resources/sass/app.scss',
+    'resources/sass/default.scss',
+    'resources/sass/forms.scss',
+    'resources/sass/button.scss',
+    'resources/sass/table.scss',
+    'resources/sass/text.scss',
+    'resources/sass/message.scss',
     'resources/js/app.js'
     ])
 </head>
@@ -20,7 +22,7 @@
         <div class="site-title"> {{ $title }} </div>
     </header>
     @if (session('success'))
-    <div class="flash_message bg-success text-center py-3 my-0">
+    <div class="message success">
         {{ session('success') }}
     </div>
     @endif

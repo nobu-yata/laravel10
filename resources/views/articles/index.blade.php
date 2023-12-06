@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('contents')
 
-<div class='mb-2'>
+<div class="mb-2">
     {{ Form::open(['route' => 'articles.create']) }}
     {{ Form::button('追加', 
             ['type' => 'submit','class' => 'btn btn-primary btn-sm me-2'],
@@ -22,13 +22,13 @@
                 <td> {{ $article->title }} </td>
                 <td> {{ $article->body }} </td>
                 <td>
-                    <div>
+                    <div style="display: inline-block; _display: inline;">
                         {{ Form::open(['route' => ['articles.edit', 'id' => $article->id]]) }}
                         {{ Form::button('編集', 
                             ['type' => 'submit','class' => 'btn btn-secondary btn-sm me-2']) }}
                         {{ Form::close() }}
                     </div>
-                    <div>
+                    <div style="display: inline-block; _display: inline;">
                         {{ Form::open(['route' => ['articles.destroy', 'id' => $article->id]]) }}
                         {{ Form::button('削除', 
                             ['type' => 'submit','class' => 'btn btn-warning btn-sm me-2']) }}
