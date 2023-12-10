@@ -32,6 +32,15 @@ class ArticleController extends Controller
      */
     public function store(Article $article, Request $request)
     {
+        $request->validate([
+            'title' => [
+                'required',
+                'unique:articles',
+                'max:255'
+            ],
+            'body' => ['required'],
+        ]);
+
         $article->fill([
             'title' =>  $request->input('title'),
             'body' => $request->input('body')
@@ -65,6 +74,15 @@ class ArticleController extends Controller
      */
     public function update(Article $article, Request $request)
     {
+
+        $request->validate([
+            'title' => [
+                'required',
+                'unique:articles',
+                'max:255'
+            ],
+            'body' => ['required'],
+        ]);
 
         $article->where('id', '=', $request->id)
             ->update([

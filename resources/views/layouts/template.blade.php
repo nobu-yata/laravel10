@@ -26,6 +26,15 @@
         {{ session('success') }}
     </div>
     @endif
+    @if ($errors->any())
+    <div class="message error">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     @yield('contents')
     <footer>
         Laravel Test
