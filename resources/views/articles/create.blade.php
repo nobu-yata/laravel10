@@ -13,7 +13,7 @@
                 <div>{{ Form::text('title') }}</div>
             </td>
             <td>
-                <div>{{ Form::text('body') }}</div>
+                <div>{{ Form::textarea('body') }}</div>
             </td>
         </tr>
     </table>

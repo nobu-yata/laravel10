@@ -32,14 +32,21 @@ class ArticleController extends Controller
      */
     public function store(Article $article, Request $request)
     {
-        $request->validate([
-            'title' => [
-                'required',
-                'unique:articles',
-                'max:255'
+        $request->validate(
+            [
+                'title' => [
+                    'required',
+                    'unique:articles',
+                    'max:255'
+                ],
+                'body' => ['required'],
             ],
-            'body' => ['required'],
-        ]);
+            [
+                'title.required' => 'タイトルは必須項目です。',
+                'body.required' => '内容は必須項目です。'
+            ]
+        );
+
 
         $article->fill([
             'title' =>  $request->input('title'),
@@ -75,14 +82,20 @@ class ArticleController extends Controller
     public function update(Article $article, Request $request)
     {
 
-        $request->validate([
-            'title' => [
-                'required',
-                'unique:articles',
-                'max:255'
+        $request->validate(
+            [
+                'title' => [
+                    'required',
+                    'unique:articles',
+                    'max:255'
+                ],
+                'body' => ['required'],
             ],
-            'body' => ['required'],
-        ]);
+            [
+                'title.required' => 'タイトルは必須項目です。',
+                'body.required' => '内容は必須項目です。'
+            ]
+        );
 
         $article->where('id', '=', $request->id)
             ->update([
