@@ -6,12 +6,12 @@
     <table class="table mt-4">
         <tr>
             <th>タイトル</th>
-            <th>内容</th>
-        </tr>
-        <tr>
             <td>
                 <div>{{ Form::text('title', $article->title) }}</div>
             </td>
+        </tr>
+        <tr>
+            <th>内容</th>
             <td>
                 <div>{{ Form::textarea('body', $article->body) }}</div>
             </td>

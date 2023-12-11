@@ -9,6 +9,8 @@ laravelを利用した作業例です。以下の技術を使用しています�
 - phpmyadmin
 - vite
 - bootstrap 5
+- jQuery
+
 
 ## 機能について
 記事の一覧表示、DBへの登録・変更・削除を実装しています。

@@ -32,7 +32,9 @@
                     <div style="display: inline-block; _display: inline;">
                         {{ Form::open(['route' => ['articles.destroy', 'id' => $article->id]]) }}
                         {{ Form::button('削除', 
-                            ['type' => 'submit','class' => 'btn btn-warning btn-sm me-2']) }}
+                            ['type' => 'submit',
+                             'class' => 'btn btn-warning btn-sm me-2',
+                             'id' => 'del-btn']) }}
                         {{ Form::close() }}
                     </div>
                 </td>
