@@ -42,6 +42,7 @@ class ArticleController extends Controller
                 'body' => ['required'],
             ],
             [
+                'title.unique' => '他に重複したタイトル名が存在しています。',
                 'title.required' => 'タイトルは必須項目です。',
                 'body.required' => '内容は必須項目です。'
             ]
@@ -86,12 +87,13 @@ class ArticleController extends Controller
             [
                 'title' => [
                     'required',
-                    'unique:articles',
+                    'unique:articles,title,' . $request->id . ',id',
                     'max:255'
                 ],
                 'body' => ['required'],
             ],
             [
+                'title.unique' => '他に重複したタイトル名が存在しています。',
                 'title.required' => 'タイトルは必須項目です。',
                 'body.required' => '内容は必須項目です。'
             ]
