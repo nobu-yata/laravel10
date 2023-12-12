@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $title = '書き込み一覧';
-        $articles = Article::all();
+        $articles = Article::paginate(3);
         $count = Article::count();
         return view('articles.index', compact('articles', 'count', 'title'));
     }
@@ -73,7 +73,8 @@ class ArticleController extends Controller
     public function edit(Article $article, Request $request)
     {
         $title = '書き込み編集';
-        $article = Article::find($request->id);
+        $article = $article->find($request->id);
+
         return view('articles.edit', compact('article', 'title'));
     }
 

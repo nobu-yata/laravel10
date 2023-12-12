@@ -21,7 +21,7 @@
             @foreach ($articles as $article)
             <tr>
                 <td> {{ $article->title }} </td>
-                <td> {{ $article->body }} </td>
+                <td><pre> {{ $article->body }} </pre></td>
                 <td>
                     <div style="display: inline-block; _display: inline;">
                         {{ Form::open(['route' => ['articles.edit', 'id' => $article->id]]) }}
@@ -42,6 +42,7 @@
             @endforeach
         </thead>
     </table>
+    <div>{{ $articles->links('pagination::bootstrap-4') }}</div>
     <div class="article-count">全部で{{ $count }}件です。</div>
 </main>
 @endsection
