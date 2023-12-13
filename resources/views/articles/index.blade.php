@@ -17,11 +17,14 @@
                 <th>内容</th>
                 <th>機能</th>
             </tr>
-
+        </thead>
+        <tbody>
             @foreach ($articles as $article)
             <tr>
                 <td> {{ $article->title }} </td>
-                <td><pre> {{ $article->body }} </pre></td>
+                <td>
+                    <pre> {{ $article->body }} </pre>
+                </td>
                 <td>
                     <div style="display: inline-block; _display: inline;">
                         {{ Form::open(['route' => ['articles.edit', 'id' => $article->id]]) }}
@@ -40,7 +43,7 @@
                 </td>
             </tr>
             @endforeach
-        </thead>
+        </tbody>
     </table>
     <div>{{ $articles->links('pagination::bootstrap-4') }}</div>
     <div class="article-count">全部で{{ $count }}件です。</div>

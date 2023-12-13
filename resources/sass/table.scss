@@ -9,7 +9,6 @@
     td,
     th {
         border: $color-gray-light solid 1px;
-        vertical-align: middle;
     }
 
     th {
@@ -17,7 +16,7 @@
         color: $color-gray-ultra-light;
         font-weight: 500;
         background-color: $color-gray;
-        //vertical-align: middle;
+        vertical-align: middle;
 
         a {
             text-decoration: none;
