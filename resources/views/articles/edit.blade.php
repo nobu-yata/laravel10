@@ -16,7 +16,6 @@
                 <div>{{ Form::textarea('body', $article->body) }}</div>
             </td>
         </tr>
-
     </table>
     <br>
     {{ Form::button('更新', 
