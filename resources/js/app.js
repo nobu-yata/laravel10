@@ -7,4 +7,10 @@ $(function () {
             return false;
         }
     });
+    $('#chg-btn').on("click", function (){
+        if(!confirm('更新してもよろしいですか？')){
+            return false;
+        }
+    });
+
 });

@@ -19,8 +19,9 @@
     </table>
     <br>
     {{ Form::button('更新', 
-            ['type' => 'submit'],
-            ['class' => 'btn btn-primary btn-sm me-2']) }}
+            ['type' => 'submit',
+            'class' => 'btn btn-primary btn-sm me-2',
+            'id' => 'chg-btn']) }}
     {{ Form::close() }}
     <br>
     <a href="{{route('articles.index')}}">{{__('戻る')}}</a>
