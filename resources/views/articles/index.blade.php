@@ -13,10 +13,10 @@
                         'class' => 'btn btn-primary btn-sm me-2',],
                         ) }}
                     {{ Form::close() }}
-                    {{ Form::open(['route' => 'articles.index',
+                    {{ Form::open(['route' => 'articles.csvDownload',
                         'style'=>'display: inline']) }}
                     {{ Form::hidden('csv', '1')}}
-                    {{ Form::button('CSVダウンロード', 
+                    {{ Form::button('全件CSVダウンロード', 
                         ['type' => 'submit',
                         'class' => 'btn btn-primary btn-sm me-2',
                         'id' => 'csvdel-btn'],

@@ -60,13 +60,54 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * CSV Download（SJISで生成する）
      */
-    public function show(Article $article)
+    public function csvDownload(Article $article)
     {
-        //
+        $filePath = tempnam(sys_get_temp_dir(), 'csv');
+        $fp = fopen($filePath, 'w');
+
+        $articlesArry = $article->all()->toArray();
+
+        $csvHeader=[
+            'ID',
+            'タイトル',
+            '内容',
+            '作成日時',
+            '更新日時',
+        ];
+
+        self::fputcsvWithEncoding($fp, $csvHeader);
+
+        foreach ($articlesArry as $row) {
+            self::fputcsvWithEncoding($fp, $row);
+        }
+
+        $callback = function () use ($filePath) {
+            readfile($filePath);
+            unlink($filePath);
+        };
+
+        $headers = [
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => 'attachment;'
+        ];
+        $filename = '書き込み全件_' . date('YmdHis') . '_sjis.csv';
+
+        return response()->streamDownload($callback, $filename, $headers);
     }
 
+    private function fputcsvWithEncoding($fp, $csvArr)
+    {
+        $csvArr = $this->convertArraySjisEncoding($csvArr);
+        fputcsv($fp, $csvArr);
+    }
+    private function convertArraySjisEncoding($arr)
+    {
+        return array_map(function ($val) {
+            return mb_convert_encoding((string)$val, 'SJIS', 'UTF-8');
+        }, $arr);
+    }
     /**
      * Show the form for editing the specified resource.
      */
