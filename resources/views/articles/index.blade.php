@@ -5,10 +5,22 @@
         <thead>
             <tr>
                 <div class="mt-2 mb-2">
-                    {{ Form::open(['route' => 'articles.create']) }}
+                    {{ Form::open(['method' => 'get',
+                        'route' => 'articles.create',
+                        'style'=>'display: inline']) }}
                     {{ Form::button('追加', 
-                        ['type' => 'submit','class' => 'btn btn-primary btn-sm me-2'],
-                    ) }}
+                        ['type' => 'submit',
+                        'class' => 'btn btn-primary btn-sm me-2',],
+                        ) }}
+                    {{ Form::close() }}
+                    {{ Form::open(['route' => 'articles.index',
+                        'style'=>'display: inline']) }}
+                    {{ Form::hidden('csv', '1')}}
+                    {{ Form::button('CSVダウンロード', 
+                        ['type' => 'submit',
+                        'class' => 'btn btn-primary btn-sm me-2',
+                        'id' => 'csvdel-btn'],
+                        ) }}
                     {{ Form::close() }}
                 </div>
             </tr>
