@@ -13,7 +13,7 @@ class ArticleController extends Controller
     public function index()
     {
         $title = '書き込み一覧';
-        $articles = Article::paginate(5);
+        $articles = Article::orderBy('id', 'desc')->paginate(5);
         $count = Article::count();
         return view('articles.index', compact('articles', 'count', 'title'));
     }
