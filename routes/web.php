@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Article\ArticleController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +16,16 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
 
-Route::get('/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::get('/article', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/article/create', [ArticleController::class, 'create'])->name('articles.create');
+Route::post('/article/store', [ArticleController::class, 'store'])->name('articles.store');
+Route::post('/article/csv', [ArticleController::class, 'csvDownload'])->name('articles.csvDownload');
+Route::get('/article/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::post('/article/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::post('/article/update', [ArticleController::class, 'update'])->name('articles.update');
+Route::post('/article/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
-Route::post('/store', [ArticleController::class, 'store'])->name('articles.store');
-
-Route::post('/csv', [ArticleController::class, 'csvDownload'])->name('articles.csvDownload');
-
-Route::get('/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-Route::post('/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-
-Route::post('/update', [ArticleController::class, 'update'])->name('articles.update');
-
-Route::post('/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
+Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/user/register', [RegisterController::class, 'create'])->name('auth.create');
+Route::post('/user/store', [RegisterController::class, 'store'])->name('auth.store');
