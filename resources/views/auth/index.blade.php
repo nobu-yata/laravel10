@@ -2,7 +2,7 @@
 @section('contents')
 
 <main class="container">
-    {{ Form::open(['route' => ['auth.store']]) }}
+    {{ Form::open(['route' => ['login.index']]) }}
     <table class="table mt-4">
         <tr>
             <th>ユーザー名</th>
