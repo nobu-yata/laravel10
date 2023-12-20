@@ -33,28 +33,35 @@ class RegisterController extends Controller
     {
         $request->validate(
             [
+                'email' => [
+                    'required',
+                    'email',
+                    'unique:users',
+                ],
+                'password' => [
+                    'required',
+                    'confirmed',
+                    'min:8',
+                ],
                 'name' => [
                     'required',
                 ],
-                'password' => [
-                    'required'
-                ],
-                'email' => [
-                    'required'
-                ],
-
             ],
             [
-                'name.required' => '名前は必須項目です。',
+                'email.required' => 'Eメールアドレスは必須項目です。',
+                'email.email' => 'Eメールアドレスの形式で入力してください。',
+                'email.unique' => 'そのEメールアドレスは既に使用されています。',
                 'password.required' => 'パスワードは必須項目です。',
-                'email.required' => 'Eメールアドレスは必須項目です。'
+                'password.confirmed' => '確認用パスワードが一致しません。',
+                'password.min' => 'パスワードは8文字以上で入力してください。',
+                'name.required' => 'お名前は必須項目です。',
             ]
         );
 
 
         $user->fill([
             'name' =>  $request->input('name'),
-            'password' => $request->input('password'),
+            'password' => password_hash($request->input('password'), PASSWORD_BCRYPT),
             'email' => $request->input('email'),
         ])->save();
 

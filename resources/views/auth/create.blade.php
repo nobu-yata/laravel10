@@ -5,23 +5,27 @@
     {{ Form::open(['route' => ['auth.store']]) }}
     <table class="table mt-4">
         <tr>
-            <th>ユーザー名</th>
+            <th>メールアドレス</th>
             <td>
-                <div>{{ Form::text('name') }}</div>
+                <div>{{ Form::text('email') }}</div>
             </td>
-
         </tr>
         <tr>
             <th>パスワード</th>
             <td>
                 <div>{{ Form::password('password') }}</div>
             </td>
-
         </tr>
         <tr>
-            <th>メールアドレス</th>
+            <th>パスワード（確認用）</th>
             <td>
-                <div>{{ Form::text('email') }}</div>
+                <div>{{ Form::password('password_confirmation') }}</div>
+            </td>
+        </tr>
+        <tr>
+            <th>お名前</th>
+            <td>
+                <div>{{ Form::text('name') }}</div>
             </td>
         </tr>
     </table>

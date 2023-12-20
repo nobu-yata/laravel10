@@ -17,9 +17,9 @@
         </tr>
         {{ Form::open(['route' => ['login.index']]) }}
         <tr>
-            <th>ユーザー名</th>
+            <th>Eメールアドレス</th>
             <td>
-                <div>{{ Form::text('name') }}</div>
+                <div>{{ Form::text('email') }}</div>
             </td>
 
         </tr>
