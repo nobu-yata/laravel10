@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -28,10 +29,38 @@ class RegisterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(User $user, Request $request)
     {
-        //
-        print('registed');
+        $request->validate(
+            [
+                'name' => [
+                    'required',
+                ],
+                'password' => [
+                    'required'
+                ],
+                'email' => [
+                    'required'
+                ],
+
+            ],
+            [
+                'name.required' => '名前は必須項目です。',
+                'password.required' => 'パスワードは必須項目です。',
+                'email.required' => 'Eメールアドレスは必須項目です。'
+            ]
+        );
+
+
+        $user->fill([
+            'name' =>  $request->input('name'),
+            'password' => $request->input('password'),
+            'email' => $request->input('email'),
+        ])->save();
+
+
+        return redirect()->route('login.index')
+            ->with('success', '登録しました。');
     }
 
     /**

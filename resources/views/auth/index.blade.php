@@ -2,8 +2,20 @@
 @section('contents')
 
 <main class="container">
-    {{ Form::open(['route' => ['login.index']]) }}
     <table class="table mt-4">
+        <tr>
+            <div class="mt-2 mb-2">
+                {{ Form::open(['method' => 'get',
+                    'route' => 'auth.create',
+                    'style'=>'display: inline']) }}
+                {{ Form::button('ユーザー新規登録はこちら', 
+                    ['type' => 'submit',
+                    'class' => 'btn btn-primary btn-sm me-2',],
+                    ) }}
+                {{ Form::close() }}
+            </div>
+        </tr>
+        {{ Form::open(['route' => ['login.index']]) }}
         <tr>
             <th>ユーザー名</th>
             <td>
