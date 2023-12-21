@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -21,7 +22,6 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        //
         $title = 'ユーザー登録';
         return view('auth.create', compact('title'));
     }
@@ -65,8 +65,9 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
         ])->save();
 
+        Auth::login($user);
 
-        return redirect()->route('login.index')
+        return redirect()->route('articles.index')
             ->with('success', '登録しました。');
     }
 

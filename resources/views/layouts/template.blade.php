@@ -19,7 +19,8 @@
 
 <body>
     <header>
-        <div class="site-title">{{ $title }}</div>
+        <div>{{ $title }}</div>
+        <div style='text-align:right;'><a href="{{route('login.logout')}}"  class="nav-link fw-bold">ログアウト</a></div>
     </header>
     @if (session('success'))
     <div class="message success">
