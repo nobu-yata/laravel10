@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -16,12 +18,15 @@ class LoginController extends Controller
 
         $title = 'ログイン画面';
         return view('auth.index', compact('title'));
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function login(Article $articles)
+    {
+        $title = '書き込み一覧';
+        $articles = Article::latest()->paginate(5);
+        $count = Article::count();
+        return redirect()->route('articles.index');
+    }
     public function logout()
     {
         //

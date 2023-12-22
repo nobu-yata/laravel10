@@ -27,6 +27,7 @@ Route::post('/article/update', [ArticleController::class, 'update'])->name('arti
 Route::post('/article/destroy', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
-Route::get('/', [LoginController::class, 'logout'])->name('login.logout');
+Route::post('/login', [LoginController::class, 'login'])->name('login.login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 Route::get('/user/register', [RegisterController::class, 'create'])->name('auth.create');
 Route::post('/user/store', [RegisterController::class, 'store'])->name('auth.store');

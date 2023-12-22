@@ -15,7 +15,7 @@
                 {{ Form::close() }}
             </div>
         </tr>
-        {{ Form::open(['route' => ['login.index']]) }}
+        {{ Form::open(['route' => ['login.login']]) }}
         <tr>
             <th>Eメールアドレス</th>
             <td>

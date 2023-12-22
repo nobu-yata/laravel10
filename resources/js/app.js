@@ -12,5 +12,10 @@ $(function () {
             return false;
         }
     });
+    $('#logout').on("click", function (){
+        if(!confirm('ログアウトしますか？')){
+            return false;
+        }
+    });
 
 });
