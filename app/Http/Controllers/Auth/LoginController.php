@@ -37,14 +37,13 @@ class LoginController extends Controller
                 'password.required' => 'パスワードを入力してください。',
             ]
         );
-        print('aaaa');
         if (Auth::attempt($user_info)) {
             $request->session()->regenerate();
             $title = '書き込み一覧';
             return redirect()->route('articles.index', compact('title'));
         }
         $title = 'ログイン画面';
-        return redirect()->route('auth.index', compact('title'))
+        return redirect()->route('login.index', compact('title'))
             ->with('error', '認証に失敗しました。');
     }
     public function logout(User $user)

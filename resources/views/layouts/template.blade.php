@@ -29,6 +29,11 @@
         {{ session('success') }}
     </div>
     @endif
+    @if (session('error'))
+    <div class="message error">
+        {{ session('error') }}
+    </div>
+    @endif
     @if ($errors->any())
     <div class="message error">
         <ul>
