@@ -20,9 +20,11 @@
 <body>
     <header>
         <div>{{ $title }}</div>
+        @if (Auth::check())
         <div style='text-align:right;'>
             <a id="logout" href="{{route('login.logout')}}"  class="nav-link fw-bold">ログアウト</a>
         </div>
+        @endif
     </header>
     @if (session('success'))
     <div class="message success">

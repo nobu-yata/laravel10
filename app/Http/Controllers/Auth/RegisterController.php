@@ -57,6 +57,7 @@ class RegisterController extends Controller
         ])->save();
 
         Auth::login($user);
+        $request->session()->regenerate();
 
         return redirect()->route('articles.index')
             ->with('success', '登録しました。');

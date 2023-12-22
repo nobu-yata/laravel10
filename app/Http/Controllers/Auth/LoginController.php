@@ -46,9 +46,11 @@ class LoginController extends Controller
         return redirect()->route('login.index', compact('title'))
             ->with('error', '認証に失敗しました。');
     }
-    public function logout(User $user)
+    public function logout(Request $request)
     {
-        Auth::logout($user);
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login.index');
     }
 }

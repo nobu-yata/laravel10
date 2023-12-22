@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -14,6 +15,9 @@ class ArticleController extends Controller
      */
     public function index(User $user)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.index');
+        }
         $title = '書き込み一覧';
         $articles = Article::latest()->paginate(5);
         $count = Article::count();
@@ -25,6 +29,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login.index');
+        }
         $title = '新規書き込み';
         return view('articles.create', compact('title'));
     }
@@ -71,7 +78,7 @@ class ArticleController extends Controller
 
         $articlesArry = $article->all()->toArray();
 
-        $csvHeader=[
+        $csvHeader = [
             'ID',
             'タイトル',
             '内容',
