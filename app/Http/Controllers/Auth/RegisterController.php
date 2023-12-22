@@ -10,14 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -57,7 +49,6 @@ class RegisterController extends Controller
                 'name.required' => 'お名前は必須項目です。',
             ]
         );
-
 
         $user->fill([
             'name' =>  $request->input('name'),

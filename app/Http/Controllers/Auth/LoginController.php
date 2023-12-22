@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
@@ -20,55 +21,35 @@ class LoginController extends Controller
         return view('auth.index', compact('title'));
     }
 
-    public function login(Article $articles)
+    public function login(Article $articles, Request $request)
     {
-        $title = '書き込み一覧';
-        $articles = Article::latest()->paginate(5);
-        $count = Article::count();
-        return redirect()->route('articles.index');
+        $user_info = $request->validate(
+            [
+                'email' => [
+                    'required',
+                ],
+                'password' => [
+                    'required',
+                ],
+            ],
+            [
+                'email.required' => 'Eメールアドレスを入力してください。',
+                'password.required' => 'パスワードを入力してください。',
+            ]
+        );
+        print('aaaa');
+        if (Auth::attempt($user_info)) {
+            $request->session()->regenerate();
+            $title = '書き込み一覧';
+            return redirect()->route('articles.index', compact('title'));
+        }
+        $title = 'ログイン画面';
+        return redirect()->route('auth.index', compact('title'))
+            ->with('error', '認証に失敗しました。');
     }
-    public function logout()
+    public function logout(User $user)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Auth::logout($user);
+        return redirect()->route('login.index');
     }
 }
