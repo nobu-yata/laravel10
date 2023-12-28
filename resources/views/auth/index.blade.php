@@ -36,7 +36,5 @@
             ['type' => 'submit'],
             ['class' => 'btn btn-primary btn-sm me-2']) }}
     {{ Form::close() }}
-    <br>
-    <a href="{{route('login.index')}}">{{__('戻る')}}</a>
 </main>
 @endsection

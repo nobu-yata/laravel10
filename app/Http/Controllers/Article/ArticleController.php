@@ -21,7 +21,7 @@ class ArticleController extends Controller
         $title = '書き込み一覧';
         $articles = Article::latest()->paginate(5);
         $count = Article::count();
-        return view('articles.index', compact('articles', 'count', 'title'));
+        return view('articles.index', compact('user', 'articles', 'count', 'title'));
     }
 
     /**
@@ -39,8 +39,10 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Article $article, Request $request)
+    public function store(User $user, Article $article, Request $request)
     {
+        $user = Auth::user();
+
         $request->validate(
             [
                 'title' => [
@@ -59,6 +61,7 @@ class ArticleController extends Controller
 
 
         $article->fill([
+            'user_name' =>  $user->name,
             'title' =>  $request->input('title'),
             'body' => $request->input('body')
         ])->save();

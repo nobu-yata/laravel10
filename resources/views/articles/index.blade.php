@@ -25,6 +25,7 @@
                 </div>
             </tr>
             <tr>
+                <th>お名前</th>
                 <th>タイトル</th>
                 <th>内容</th>
                 <th>機能</th>
@@ -33,6 +34,7 @@
         <tbody>
             @foreach ($articles as $article)
             <tr>
+                <td> {{ $article->user_name }} </td>
                 <td> {{ $article->title }} </td>
                 <td>
                     <pre> {{ $article->body }} </pre>
