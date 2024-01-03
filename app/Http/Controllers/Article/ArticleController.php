@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Article;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleStoreRequest;
+use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,33 +41,15 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(User $user, Article $article, Request $request)
+    public function store(User $user, Article $article, ArticleStoreRequest $request)
     {
         $user = Auth::user();
-
-        $request->validate(
-            [
-                'title' => [
-                    'required',
-                    'unique:articles',
-                    'max:255'
-                ],
-                'body' => ['required'],
-            ],
-            [
-                'title.unique' => '他に重複したタイトル名が存在しています。',
-                'title.required' => 'タイトルは必須項目です。',
-                'body.required' => '内容は必須項目です。'
-            ]
-        );
-
 
         $article->fill([
             'user_name' =>  $user->name,
             'title' =>  $request->input('title'),
             'body' => $request->input('body')
         ])->save();
-
 
         return redirect()->route('articles.index')
             ->with('success', '登録しました。');
@@ -134,24 +118,8 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Article $article, Request $request)
+    public function update(Article $article, ArticleUpdateRequest $request)
     {
-
-        $request->validate(
-            [
-                'title' => [
-                    'required',
-                    'unique:articles,title,' . $request->id . ',id',
-                    'max:255'
-                ],
-                'body' => ['required'],
-            ],
-            [
-                'title.unique' => '他に重複したタイトル名が存在しています。',
-                'title.required' => 'タイトルは必須項目です。',
-                'body.required' => '内容は必須項目です。'
-            ]
-        );
 
         $article->where('id', '=', $request->id)
             ->update([
