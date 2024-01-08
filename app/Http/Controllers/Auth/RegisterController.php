@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,38 +22,11 @@ class RegisterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(User $user, Request $request)
+    public function store(User $user, RegisterStoreRequest $request)
     {
-        $request->validate(
-            [
-                'email' => [
-                    'required',
-                    'email',
-                    'unique:users',
-                ],
-                'password' => [
-                    'required',
-                    'confirmed',
-                    'min:8',
-                ],
-                'name' => [
-                    'required',
-                ],
-            ],
-            [
-                'email.required' => 'Eメールアドレスは必須項目です。',
-                'email.email' => 'Eメールアドレスの形式で入力してください。',
-                'email.unique' => 'そのEメールアドレスは既に使用されています。',
-                'password.required' => 'パスワードは必須項目です。',
-                'password.confirmed' => '確認用パスワードが一致しません。',
-                'password.min' => 'パスワードは8文字以上で入力してください。',
-                'name.required' => 'お名前は必須項目です。',
-            ]
-        );
-
         $user->fill([
             'name' =>  $request->input('name'),
-            'password' => password_hash($request->input('password'), PASSWORD_BCRYPT),
+            'password' => $request->input('password'),
             'email' => $request->input('email'),
         ])->save();
 

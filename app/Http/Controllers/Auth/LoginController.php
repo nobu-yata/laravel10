@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\User;
+use App\Http\Requests\LoginLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,22 +22,10 @@ class LoginController extends Controller
         return view('auth.index', compact('title'));
     }
 
-    public function login(Article $articles, Request $request)
+    public function login(Article $articles, LoginLoginRequest $request)
     {
-        $user_info = $request->validate(
-            [
-                'email' => [
-                    'required',
-                ],
-                'password' => [
-                    'required',
-                ],
-            ],
-            [
-                'email.required' => 'Eメールアドレスを入力してください。',
-                'password.required' => 'パスワードを入力してください。',
-            ]
-        );
+        $user_info = $request->only('email','password');
+
         if (Auth::attempt($user_info)) {
             $request->session()->regenerate();
             $title = '書き込み一覧';
