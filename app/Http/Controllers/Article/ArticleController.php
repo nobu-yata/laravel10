@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Article;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ArticleStoreRequest;
-use App\Http\Requests\ArticleUpdateRequest;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,7 +40,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(User $user, Article $article, ArticleStoreRequest $request)
+    public function store(User $user, Article $article, ArticleRequest $request)
     {
         $user = Auth::user();
 
@@ -118,7 +117,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Article $article, ArticleUpdateRequest $request)
+    public function update(Article $article, ArticleRequest $request)
     {
 
         $article->where('id', '=', $request->id)

@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\User;
-use App\Http\Requests\LoginLoginRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +21,7 @@ class LoginController extends Controller
         return view('auth.index', compact('title'));
     }
 
-    public function login(Article $articles, LoginLoginRequest $request)
+    public function login(Article $articles, LoginRequest $request)
     {
         $user_info = $request->only('email','password');
 
@@ -35,6 +34,7 @@ class LoginController extends Controller
         return redirect()->route('login.index', compact('title'))
             ->with('error', '認証に失敗しました。');
     }
+    
     public function logout(Request $request)
     {
         Auth::logout();
